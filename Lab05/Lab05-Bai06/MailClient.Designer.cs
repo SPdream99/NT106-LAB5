@@ -85,7 +85,7 @@
             this.panelLogin.Controls.Add(this.lblLoginTitle);
             this.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLogin.Location = new System.Drawing.Point(0, 0);
-            this.panelLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelLogin.Margin = new System.Windows.Forms.Padding(4);
             this.panelLogin.Name = "panelLogin";
             this.panelLogin.Size = new System.Drawing.Size(1312, 690);
             this.panelLogin.TabIndex = 0;
@@ -101,9 +101,9 @@
             this.groupBoxSettings.Controls.Add(this.txtSMTPHost);
             this.groupBoxSettings.Controls.Add(this.lblSMTP);
             this.groupBoxSettings.Location = new System.Drawing.Point(456, 222);
-            this.groupBoxSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSettings.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBoxSettings.Padding = new System.Windows.Forms.Padding(4);
             this.groupBoxSettings.Size = new System.Drawing.Size(400, 172);
             this.groupBoxSettings.TabIndex = 6;
             this.groupBoxSettings.TabStop = false;
@@ -112,7 +112,7 @@
             // txtIMAPPort
             // 
             this.txtIMAPPort.Location = new System.Drawing.Point(307, 37);
-            this.txtIMAPPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIMAPPort.Margin = new System.Windows.Forms.Padding(4);
             this.txtIMAPPort.Name = "txtIMAPPort";
             this.txtIMAPPort.Size = new System.Drawing.Size(65, 22);
             this.txtIMAPPort.TabIndex = 3;
@@ -131,7 +131,7 @@
             // txtIMAPHost
             // 
             this.txtIMAPHost.Location = new System.Drawing.Point(80, 37);
-            this.txtIMAPHost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIMAPHost.Margin = new System.Windows.Forms.Padding(4);
             this.txtIMAPHost.Name = "txtIMAPHost";
             this.txtIMAPHost.Size = new System.Drawing.Size(172, 22);
             this.txtIMAPHost.TabIndex = 1;
@@ -150,7 +150,7 @@
             // txtSMTPPort
             // 
             this.txtSMTPPort.Location = new System.Drawing.Point(307, 86);
-            this.txtSMTPPort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSMTPPort.Margin = new System.Windows.Forms.Padding(4);
             this.txtSMTPPort.Name = "txtSMTPPort";
             this.txtSMTPPort.Size = new System.Drawing.Size(65, 22);
             this.txtSMTPPort.TabIndex = 7;
@@ -169,7 +169,7 @@
             // txtSMTPHost
             // 
             this.txtSMTPHost.Location = new System.Drawing.Point(80, 86);
-            this.txtSMTPHost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSMTPHost.Margin = new System.Windows.Forms.Padding(4);
             this.txtSMTPHost.Name = "txtSMTPHost";
             this.txtSMTPHost.Size = new System.Drawing.Size(172, 22);
             this.txtSMTPHost.TabIndex = 5;
@@ -192,7 +192,7 @@
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.Location = new System.Drawing.Point(456, 406);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(400, 49);
             this.btnLogin.TabIndex = 5;
@@ -203,7 +203,7 @@
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(456, 172);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(399, 22);
@@ -222,7 +222,7 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(456, 111);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(399, 22);
             this.txtEmail.TabIndex = 2;
@@ -255,7 +255,7 @@
             this.panelMain.Controls.Add(this.panelTopBar);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(1312, 690);
             this.panelMain.TabIndex = 1;
@@ -265,7 +265,7 @@
             // 
             this.splitContainerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerMain.Location = new System.Drawing.Point(0, 62);
-            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainerMain.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainerMain.Name = "splitContainerMain";
             // 
             // splitContainerMain.Panel1
@@ -290,7 +290,7 @@
             this.listViewEmails.FullRowSelect = true;
             this.listViewEmails.HideSelection = false;
             this.listViewEmails.Location = new System.Drawing.Point(0, 0);
-            this.listViewEmails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listViewEmails.Margin = new System.Windows.Forms.Padding(4);
             this.listViewEmails.Name = "listViewEmails";
             this.listViewEmails.Size = new System.Drawing.Size(533, 628);
             this.listViewEmails.TabIndex = 0;
@@ -319,7 +319,7 @@
             this.tabControlContent.Controls.Add(this.tabSend);
             this.tabControlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlContent.Location = new System.Drawing.Point(0, 0);
-            this.tabControlContent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControlContent.Margin = new System.Windows.Forms.Padding(4);
             this.tabControlContent.Name = "tabControlContent";
             this.tabControlContent.SelectedIndex = 0;
             this.tabControlContent.Size = new System.Drawing.Size(774, 628);
@@ -331,7 +331,7 @@
             this.tabView.Controls.Add(this.lblViewFrom);
             this.tabView.Controls.Add(this.lblViewSubject);
             this.tabView.Location = new System.Drawing.Point(4, 25);
-            this.tabView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabView.Margin = new System.Windows.Forms.Padding(4);
             this.tabView.Name = "tabView";
             this.tabView.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.tabView.Size = new System.Drawing.Size(766, 599);
@@ -343,7 +343,7 @@
             // 
             this.webBrowserView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowserView.Location = new System.Drawing.Point(13, 78);
-            this.webBrowserView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.webBrowserView.Margin = new System.Windows.Forms.Padding(4);
             this.webBrowserView.MinimumSize = new System.Drawing.Size(27, 25);
             this.webBrowserView.Name = "webBrowserView";
             this.webBrowserView.Size = new System.Drawing.Size(740, 509);
@@ -388,10 +388,10 @@
             this.tabSend.Controls.Add(this.txtTo);
             this.tabSend.Controls.Add(this.lblTo);
             this.tabSend.Location = new System.Drawing.Point(4, 25);
-            this.tabSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabSend.Margin = new System.Windows.Forms.Padding(4);
             this.tabSend.Name = "tabSend";
             this.tabSend.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
-            this.tabSend.Size = new System.Drawing.Size(765, 600);
+            this.tabSend.Size = new System.Drawing.Size(766, 599);
             this.tabSend.TabIndex = 1;
             this.tabSend.Text = "Compose";
             this.tabSend.UseVisualStyleBackColor = true;
@@ -402,7 +402,7 @@
             this.chkIsHtml.Checked = true;
             this.chkIsHtml.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkIsHtml.Location = new System.Drawing.Point(307, 542);
-            this.chkIsHtml.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkIsHtml.Margin = new System.Windows.Forms.Padding(4);
             this.chkIsHtml.Name = "chkIsHtml";
             this.chkIsHtml.Size = new System.Drawing.Size(66, 20);
             this.chkIsHtml.TabIndex = 9;
@@ -422,7 +422,7 @@
             // btnBrowse
             // 
             this.btnBrowse.Location = new System.Drawing.Point(160, 535);
-            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBrowse.Margin = new System.Windows.Forms.Padding(4);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(133, 31);
             this.btnBrowse.TabIndex = 7;
@@ -437,7 +437,7 @@
             this.btnSend.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSend.ForeColor = System.Drawing.Color.White;
             this.btnSend.Location = new System.Drawing.Point(613, 535);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(133, 37);
             this.btnSend.TabIndex = 6;
@@ -448,7 +448,7 @@
             // txtBody
             // 
             this.txtBody.Location = new System.Drawing.Point(13, 172);
-            this.txtBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(4);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(732, 344);
             this.txtBody.TabIndex = 5;
@@ -467,7 +467,7 @@
             // txtSubject
             // 
             this.txtSubject.Location = new System.Drawing.Point(13, 105);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(732, 22);
             this.txtSubject.TabIndex = 3;
@@ -485,7 +485,7 @@
             // txtTo
             // 
             this.txtTo.Location = new System.Drawing.Point(13, 43);
-            this.txtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(4);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(732, 22);
             this.txtTo.TabIndex = 1;
@@ -507,7 +507,7 @@
             this.panelTopBar.Controls.Add(this.btnRefresh);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTopBar.Location = new System.Drawing.Point(0, 0);
-            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(1312, 62);
             this.panelTopBar.TabIndex = 0;
@@ -515,7 +515,7 @@
             // btnSignOut
             // 
             this.btnSignOut.Location = new System.Drawing.Point(160, 12);
-            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSignOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnSignOut.Name = "btnSignOut";
             this.btnSignOut.Size = new System.Drawing.Size(133, 37);
             this.btnSignOut.TabIndex = 1;
@@ -526,7 +526,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Location = new System.Drawing.Point(13, 12);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(133, 37);
             this.btnRefresh.TabIndex = 0;
@@ -560,7 +560,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelMain);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MailClient";
             this.Text = "Email Client - Lab 05";
             this.panelLogin.ResumeLayout(false);

@@ -36,7 +36,8 @@ namespace Lab05_Bai06
 
             _emailService.OnLoginCompleted += (success, msg) =>
             {
-                this.Invoke(new Action(() => {
+                this.Invoke(new Action(() =>
+                {
                     if (success)
                     {
                         panelLogin.Visible = false;
@@ -49,7 +50,8 @@ namespace Lab05_Bai06
 
             _emailService.OnEmailsLoaded += (list) =>
             {
-                this.Invoke(new Action(() => {
+                this.Invoke(new Action(() =>
+                {
                     listViewEmails.Items.Clear();
                     foreach (var m in list)
                     {
@@ -65,18 +67,24 @@ namespace Lab05_Bai06
 
             _emailService.OnBodyLoaded += (html) =>
             {
-                this.Invoke(new Action(() => {
-                    webBrowserView.DocumentText = "about:blank";
-                    if (webBrowserView.Document != null)
-                        webBrowserView.Document.Write(html);
-                    else
-                        webBrowserView.DocumentText = html;
+                this.Invoke(new Action(() =>
+                {
+                    webBrowserView.Navigate("about:blank");
+
+                    webBrowserView.DocumentText = html;
+
+                    if (!html.Contains("charset"))
+                    {
+                        string meta = "<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'>";
+                        webBrowserView.DocumentText = meta + html;
+                    }
                 }));
             };
 
             _emailService.OnEmailSent += (success, msg) =>
             {
-                this.Invoke(new Action(() => {
+                this.Invoke(new Action(() =>
+                {
                     MessageBox.Show(msg);
                     if (success) ResetForm();
                 }));
@@ -223,6 +231,43 @@ namespace Lab05_Bai06
             catch { OnProgress?.Invoke("Lỗi kết nối IMAP."); }
         }
 
+        public string DecodeEmailContent(string rawContent)
+        {
+            if (string.IsNullOrEmpty(rawContent)) return string.Empty;
+
+            if (rawContent.Contains("=3D") || Regex.IsMatch(rawContent, @"=[0-9A-F]{2}"))
+            {
+                return DecodeQuotedPrintable(rawContent);
+            }
+
+            if (!rawContent.Contains("<html") && IsBase64String(rawContent))
+            {
+                byte[] data = Convert.FromBase64String(rawContent);
+                return Encoding.UTF8.GetString(data);
+            }
+
+            return rawContent;
+        }
+
+        private string DecodeQuotedPrintable(string input)
+        {
+            string decoded = Regex.Replace(input, @"=\r\n", "");
+
+            decoded = Regex.Replace(decoded, @"=([0-9A-F]{2})", match =>
+            {
+                int hex = int.Parse(match.Groups[1].Value, System.Globalization.NumberStyles.HexNumber);
+                return ((char)hex).ToString();
+            });
+
+            return decoded;
+        }
+
+        private bool IsBase64String(string s)
+        {
+            s = s.Trim();
+            return (s.Length % 4 == 0) && Regex.IsMatch(s, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None);
+        }
+
         public async Task GetEmailBodyAsync(int index)
         {
             OnProgress?.Invoke("Đang lấy nội dung HTML...");
@@ -231,21 +276,34 @@ namespace Lab05_Bai06
                 using (var tcp = new TcpClient())
                 {
                     await tcp.ConnectAsync(_ih, _ip);
-                    using (var ssl = new SslStream(tcp.GetStream()))
+                    using (var ssl = new SslStream(tcp.GetStream(), false))
                     {
                         await ssl.AuthenticateAsClientAsync(_ih);
                         await ReceiveResponse(ssl);
+
                         await SendCommand(ssl, $"L1 LOGIN {_u} {_p}", "L1");
                         await SendCommand(ssl, "L2 SELECT INBOX", "L2");
-                        // Fetch nội dung thô của mail
-                        var res = await SendCommand(ssl, $"L3 FETCH {index} (BODY[TEXT])", "L3");
+
+                        var res = await SendCommand(ssl, $"L3 FETCH {index} (BODY[1.2])", "L3");
+
+                        if (string.IsNullOrEmpty(res) || !res.Contains("HTML"))
+                        {
+                            res = await SendCommand(ssl, $"L3 FETCH {index} (BODY[1])", "L3");
+                        }
+
                         string html = ExtractHtmlPart(res);
+
+                        html = DecodeEmailContent(html);
+
                         OnBodyLoaded?.Invoke(html);
                         OnProgress?.Invoke("Đã tải thư.");
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                OnProgress?.Invoke($"Lỗi: {ex.Message}");
+            }
         }
 
         public void SendEmail(string to, string sub, string body, bool html, List<string> atts)
@@ -253,13 +311,14 @@ namespace Lab05_Bai06
             OnProgress?.Invoke("Đang gửi mail...");
             try
             {
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 using (var mail = new MailMessage(_u, to, sub, body) { IsBodyHtml = html })
                 {
                     if (atts != null) foreach (var a in atts) mail.Attachments.Add(new Attachment(a));
-                    using (var smtp = new SmtpClient(_sh, _sp))
+                    using (var smtp = new SmtpClient())
                     {
+                        smtp.Host = _sh;
+                        smtp.Port = _sp;
                         smtp.Credentials = new NetworkCredential(_u, _p);
                         smtp.EnableSsl = true;
                         smtp.Send(mail);
@@ -305,7 +364,8 @@ namespace Lab05_Bai06
         {
             if (string.IsNullOrEmpty(input) || input == "N/A") return input;
             string pattern = @"=\?utf-8\?([BQ])\?(.*?)\?=";
-            return Regex.Replace(input, pattern, m => {
+            return Regex.Replace(input, pattern, m =>
+            {
                 string type = m.Groups[1].Value.ToUpper();
                 string data = m.Groups[2].Value;
                 if (type == "B") return Encoding.UTF8.GetString(Convert.FromBase64String(data));
@@ -316,7 +376,6 @@ namespace Lab05_Bai06
 
         private string ExtractHtmlPart(string raw)
         {
-            // Xử lý Literal IMAP {size}
             var mSize = Regex.Match(raw, @"\{(\d+)\}\r\n");
             string body = raw;
             if (mSize.Success)
