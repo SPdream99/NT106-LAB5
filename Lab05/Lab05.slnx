@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Lab04-Bai07/Lab05_Bai05.csproj" />
   <Project Path="Lab05-Bai01/Lab05-Bai01.csproj" Id="e2e74f69-7b16-48ff-977f-7d43b4f99cc4" />
   <Project Path="Lab05-Bai04/Lab05-Bai04.csproj" />
   <Project Path="Lab05-Bai06/Lab05-Bai06.csproj" Id="5b5e7e48-709e-412d-a6d5-dfb31b1a2f01" />
